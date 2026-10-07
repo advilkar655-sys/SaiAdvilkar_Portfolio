@@ -22,18 +22,15 @@ export const FloatingAvatar: React.FC<FloatingAvatarProps> = ({ navAnchorRef, he
       const navRect = navAnchorRef.current.getBoundingClientRect();
       const heroRect = heroAnchorRef.current.getBoundingClientRect();
 
-      // Total vertical distance between initial hero center and nav center when at top of page
-      // Calculate progress t based on current scroll position
       const scrollY = window.scrollY || window.pageYOffset;
       
-      // Determine flight distance threshold (approx distance for hero to reach top)
-      const initialHeroTop = heroRect.top + scrollY;
-      const flightDistance = Math.max(100, initialHeroTop - navRect.top);
+      // Extended flight distance (480px) so the scroll flight is longer, smoother, and more gradual
+      const flightDistance = 480;
       
       const t = Math.min(1, Math.max(0, scrollY / flightDistance));
 
-      // Smooth easing interpolation for natural flight feeling
-      const easedT = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      // Ultra-smooth cubic ease-out curve for liquid flight feeling
+      const easedT = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
       const currentLeft = heroRect.left + (navRect.left - heroRect.left) * easedT;
       const currentTop = heroRect.top + (navRect.top - heroRect.top) * easedT;
