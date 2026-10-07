@@ -32,11 +32,11 @@ export interface Achievement {
 export const PORTFOLIO_DATA = {
   personal: {
     name: "Sai Advilkar",
-    role: "AI Developer & CSE Undergraduate",
+    role: "AI Developer, Video Editor & CSE Undergraduate",
     degree: "B.Tech Computer Science & Engineering",
     year: "3rd Year",
     status: "Seeking Internships & AI Collaborations",
-    bio: "B.Tech CSE 3rd year student focused on building intelligent web applications and AI tools. Creator of 3 deployed AI projects for the Hack2Skill challenges in collaboration with Google for Developers.",
+    bio: "B.Tech CSE 3rd year student, AI developer, and video editor. Creator of 3 deployed AI projects—EcoSphere, JurisAi, and DemocracyAi—for the Hack2Skill challenges in collaboration with Google for Developers.",
     location: "India",
     email: "saiadvilkar@gmail.com",
     github: "https://github.com/advilkar655-sys",
@@ -122,11 +122,12 @@ export const PORTFOLIO_DATA = {
       ]
     },
     {
-      name: "Tools & Ecosystem",
+      name: "Tools, Creative & Ecosystem",
       skills: [
         { name: "Git & GitHub", level: 90 },
         { name: "Vercel Deployment", level: 92 },
-        { name: "VS Code", level: 95 }
+        { name: "VS Code & Eclipse IDE", level: 90 },
+        { name: "Video Editing & Production", level: 88 }
       ]
     }
   ] as SkillCategory[],
@@ -135,7 +136,7 @@ export const PORTFOLIO_DATA = {
       year: "2025 – Present",
       title: "B.Tech Computer Science & Engineering (3rd Year)",
       subtitle: "Undergraduate Degree",
-      description: "Focusing on software engineering, web application development, algorithms, Java core fundamentals, and AI system design."
+      description: "Focusing on software engineering, web application development, algorithms, Java core fundamentals, AI system design, and video production."
     },
     {
       year: "2025 – Present",
