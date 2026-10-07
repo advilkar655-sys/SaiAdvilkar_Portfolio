@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, onOpenLin
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
   ];
-
+//animation
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled 
