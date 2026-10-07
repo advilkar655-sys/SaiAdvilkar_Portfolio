@@ -59,7 +59,7 @@ export const FloatingAvatar: React.FC<FloatingAvatarProps> = ({ navAnchorRef, he
     
     // Initial call
     updatePosition();
-
+// scroll back
     return () => {
       window.removeEventListener('scroll', onScrollOrResize);
       window.removeEventListener('resize', onScrollOrResize);
