@@ -2,6 +2,7 @@ import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ArrowRight, Bot, Trophy, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
+import profileImg from '../assets/profile.jpg';
 
 interface HeroProps {
   darkMode: boolean;
@@ -20,7 +21,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
       {/* Grid pattern overlay */}
       <div className={`absolute inset-0 ${darkMode ? 'bg-grid-pattern opacity-40' : 'bg-grid-pattern-light opacity-30'} pointer-events-none`} />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 flex flex-col items-center">
         
         {/* Status Pill */}
         <motion.div 
@@ -46,11 +47,28 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
           </span>
         </motion.div>
 
+        {/* Profile Image above Hi, I'm Sai Advilkar */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 relative group inline-block"
+        >
+          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 p-1 shadow-2xl shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
+            <img
+              src={profileImg}
+              alt="Sai Advilkar"
+              className="w-full h-full rounded-full object-cover border-2 border-slate-950 shadow-inner"
+            />
+          </div>
+          <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md"></span>
+        </motion.div>
+
         {/* Main Name Heading */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 font-heading"
         >
           <span className={darkMode ? 'text-white' : 'text-slate-900'}>Hi, I'm </span>
@@ -63,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className={`text-lg sm:text-2xl font-semibold max-w-3xl mx-auto mb-6 font-heading ${
             darkMode ? 'text-slate-300' : 'text-slate-700'
           }`}
@@ -75,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className={`text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed ${
             darkMode ? 'text-slate-400' : 'text-slate-600'
           }`}
@@ -88,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-wrap items-center justify-center gap-4 mb-14"
         >
           <a
@@ -118,8 +136,8 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto w-full"
         >
           <div className={`p-4 rounded-2xl border backdrop-blur-md flex flex-col items-center justify-center text-center transition-transform hover:-translate-y-1 ${
             darkMode ? 'bg-slate-900/40 border-slate-800/80' : 'bg-white/60 border-slate-200/80'
