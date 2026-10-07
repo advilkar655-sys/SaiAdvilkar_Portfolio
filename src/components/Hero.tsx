@@ -2,14 +2,14 @@ import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { ArrowRight, Bot, Trophy, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
-import profileImg from '../assets/profile.jpg';
 
 interface HeroProps {
   darkMode: boolean;
   onExploreProjects: () => void;
+  heroAnchorRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
+export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects, heroAnchorRef }) => {
   return (
     <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
       
@@ -47,22 +47,11 @@ export const Hero: React.FC<HeroProps> = ({ darkMode, onExploreProjects }) => {
           </span>
         </motion.div>
 
-        {/* Profile Image above Hi, I'm Sai Advilkar */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 relative group inline-block"
-        >
-          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 p-1 shadow-2xl shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-300">
-            <img
-              src={profileImg}
-              alt="Sai Advilkar"
-              className="w-full h-full rounded-full object-cover border-2 border-slate-950 shadow-inner"
-            />
-          </div>
-          <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-950 shadow-md"></span>
-        </motion.div>
+        {/* Hero Anchor Target Slot for Flying Avatar (Bigger size as requested) */}
+        <div
+          ref={heroAnchorRef}
+          className="w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52 rounded-full mb-6 shrink-0 opacity-0 pointer-events-none"
+        />
 
         {/* Main Name Heading */}
         <motion.h1 

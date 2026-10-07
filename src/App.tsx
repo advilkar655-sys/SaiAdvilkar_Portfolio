@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { PORTFOLIO_DATA } from './data/portfolioData';
 import type { Project } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { FloatingAvatar } from './components/FloatingAvatar';
 import { HackathonBanner } from './components/HackathonBanner';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ProjectLinkModal } from './components/ProjectLinkModal';
@@ -31,6 +32,10 @@ export function App() {
 
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [selectedProjectForModal, setSelectedProjectForModal] = useState<Project | null>(null);
+
+  // Scroll Animation Target Anchors
+  const navAnchorRef = useRef<HTMLDivElement>(null);
+  const heroAnchorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     localStorage.setItem('sai_portfolio_theme', darkMode ? 'dark' : 'light');
@@ -66,12 +71,20 @@ export function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenLinkModal={handleOpenGeneralModal}
+        navAnchorRef={navAnchorRef}
+      />
+
+      {/* Floating Interactive Avatar with Smooth Continuous Flight Motion */}
+      <FloatingAvatar
+        navAnchorRef={navAnchorRef}
+        heroAnchorRef={heroAnchorRef}
       />
 
       {/* Main Content */}
       <main>
         <Hero
           darkMode={darkMode}
+          heroAnchorRef={heroAnchorRef}
           onExploreProjects={() => {
             const el = document.getElementById('projects');
             if (el) el.scrollIntoView({ behavior: 'smooth' });

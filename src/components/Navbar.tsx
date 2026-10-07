@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Link2 } from 'lucide-react';
-import profileImg from '../assets/profile.jpg';
 
 interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenLinkModal: () => void;
+  navAnchorRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, onOpenLinkModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, onOpenLinkModal, navAnchorRef }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 40);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -40,23 +40,11 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode, onOpenLin
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Logo Brand with Animated Profile Avatar */}
+          {/* Logo Brand with Reserved Anchor for Flying Avatar */}
           <a href="#" className="flex items-center gap-3 group">
             
-            {/* Nav Profile Image: smoothly scales in when scrolling down */}
-            <div className={`relative transition-all duration-500 ease-out transform ${
-              scrolled 
-                ? 'scale-100 opacity-100 w-10 h-10' 
-                : 'scale-75 opacity-0 w-0 h-0 overflow-hidden'
-            }`}>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-500 p-0.5 shadow-md shadow-cyan-500/30 group-hover:scale-105 transition-transform duration-300">
-                <img
-                  src={profileImg}
-                  alt="Sai Advilkar"
-                  className="w-full h-full rounded-full object-cover"
-                />
-              </div>
-            </div>
+            {/* Target Destination Anchor for FloatingAvatar */}
+            <div ref={navAnchorRef} className="w-10 h-10 rounded-full shrink-0" />
 
             <div className="flex flex-col">
               <span className={`font-bold tracking-tight text-base sm:text-lg flex items-center gap-1.5 font-heading ${
